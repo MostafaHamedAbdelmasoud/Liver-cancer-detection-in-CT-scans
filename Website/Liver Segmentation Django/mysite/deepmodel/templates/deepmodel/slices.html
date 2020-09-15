@@ -1,0 +1,49 @@
+{% extends "basicapp/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h3> this patient has {{slices_num}} slices </h3>
+<form name = "form" action = "{% url 'deepmodel:get_slice' %}" method = "POST" >
+        {% csrf_token %}
+
+         <div style = "max-width:470px;">
+            <center>
+               <input type = "text" style = "margin-left:20%;"
+                  placeholder = "enter slice number" name = "slice_num" />
+            </center>
+         </div>
+
+         <br>
+
+         <div style = "max-width:470px;">
+            <center>
+               <input type = "hidden" value="{{patient_id}}" style = "margin-left:20%;"
+                  placeholder = "password" name = "patient_id" />
+            </center>
+         </div>
+     <div style = "max-width:470px;">
+            <center>
+               <input type = "hidden" value="{{slices_num}}" style = "margin-left:20%;"
+                  placeholder = "password" name = "slices_num" />
+            </center>
+         </div>
+
+
+
+         <br>
+
+         <div style = "max-width:470px;">
+            <center>
+
+               <button style = "border:0px; background-color:#4285F4; margin-top:8%;
+                  height:35px; width:80%;margin-left:19%;" type = "submit"
+                  value = "Login" >
+                  <strong>Examine</strong>
+               </button>
+
+            </center>
+         </div>
+
+      </form>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+body
+{
+  background-color: $placeholder;
+  background-image: url('../images/banner-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  font-family: $body-font;
+}
+
+.nv
+{
+  font-family: sans-serif;
+  font-size: 5em;
+}

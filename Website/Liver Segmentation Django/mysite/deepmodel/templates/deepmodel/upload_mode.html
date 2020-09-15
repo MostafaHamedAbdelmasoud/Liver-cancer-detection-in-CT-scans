@@ -1,0 +1,17 @@
+{% extends "basicapp/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  <div class="jumbotron">
+    <h2>Upload Model</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        {{form|crispy}}
+
+        <button type="submit" class="save btn btn-default">Save</button>
+        <input type="hidden" name="next" value="{{ next }}" />
+    </form>
+  </div>
+{% endblock %}

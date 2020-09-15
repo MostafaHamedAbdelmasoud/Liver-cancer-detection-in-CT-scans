@@ -1,0 +1,45 @@
+    {% extends "basicapp/base.html" %}
+{% block content %}
+
+  <div class="jumbotron">
+    <h2>Patients info</h2>
+
+<ul>
+
+
+  <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>PATIENT_DICOM</th>
+
+      </tr>
+    </thead>
+    <tbody>
+   {% for patient in patients %}
+   <tr>
+         <td>{{patient.name}} </td>
+         <td>
+           {% if patient.PATIENT_DICOM  %}
+           <a href="{{patient.PATIENT_DICOM.url}}" class="btn btn-primary btn-sm">Show File</a>
+           {% endif%}
+          </td>
+
+
+          <td>
+            <a href="{% url 'deepmodel:start_dl' patient.id %}" class="btn btn-primary btn-sm">Examine with DL</a>
+
+          </td>
+       <td>
+            <a href="{% url 'deepmodel:Examine_img' patient.id %}" class="btn btn-primary btn-sm">Examine with image proc</a>
+
+          </td>
+
+
+   </tr>
+   {% endfor%}
+
+  </tbody>
+  </table>
+  </div>
+{% endblock %}

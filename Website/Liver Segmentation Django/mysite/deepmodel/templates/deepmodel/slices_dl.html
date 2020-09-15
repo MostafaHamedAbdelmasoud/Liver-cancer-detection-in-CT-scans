@@ -1,0 +1,67 @@
+{% extends "basicapp/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+<form name = "form" action ="" method = "POST" >
+        {% csrf_token %}
+
+         <div style = "max-width:470px;">
+            <center>
+               <input type = "hidden" style = "margin-left:20%;"
+                  placeholder = "enter slice number" name = "slice_num" />
+            </center>
+         </div>
+
+         <br>
+
+         <div style = "max-width:470px;">
+            <center>
+               <input type = "hidden" value="{{patient_id}}" style = "margin-left:20%;"
+                  placeholder = "password" name = "patient_id" />
+            </center>
+         </div>
+
+
+      </form>
+<br>
+
+<h2 style="text-align:center">Slideshow</h2>
+
+
+<div class="slideshow-container">
+  {% for slice in tumor_slices %}
+        <div class="mySlides2">
+            <img src="{% static slice %}" style="width:100%">
+        </div>
+    {% endfor %}
+
+
+  <a class="prev" onclick="plusSlides(-1, 1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1, 1)">&#10095;</a>
+</div>
+
+<script>
+var slideIndex = [1,1];
+var slideId = ["mySlides1", "mySlides2"]
+showSlides(1, 0);
+showSlides(1, 1);
+
+function plusSlides(n, no) {
+  showSlides(slideIndex[no] += n, no);
+}
+
+function showSlides(n, no) {
+  var i;
+  var x = document.getElementsByClassName(slideId[no]);
+  if (n > x.length) {slideIndex[no] = 1}
+  if (n < 1) {slideIndex[no] = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  x[slideIndex[no]-1].style.display = "block";
+}
+</script>
+
+{% endblock %}
